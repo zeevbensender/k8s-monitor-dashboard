@@ -87,3 +87,14 @@ Full containerization with multi-service Docker Compose or Helm.
 Prometheus/Grafana are powerful, but overkill for many developers who just want to know “what’s wrong with my cluster.” This dashboard gives you just that — fast, visual, and easy to maintain.
 
 ---
+## Building Dev Environment
+### Prerequisites:
+* nvm v18 or v20
+* python 3.10
+```commandline
+sudo apt install -y npm
+npm create vite@latest frontend --template react # Choose React and Typescript
+cd frontend
+npm install
+npm install @mui/material @emotion/react @emotion/styled axios
+```
