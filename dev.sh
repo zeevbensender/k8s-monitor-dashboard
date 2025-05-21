@@ -20,4 +20,4 @@ uvicorn backend.app.main:app --reload &
 echo "🚀 Launching frontend..."
 cd frontend
 npm install
-npm run dev
+npm run dev -- --host
