@@ -5,10 +5,10 @@ from backend.app.k8s_utils import list_pods, list_nodes
 
 app = FastAPI()
 
-# Allow CORS for frontend
+# Allow frontend access from any origin during dev
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Update if your frontend runs elsewhere
+    allow_origins=["*"],  # 🔥 for dev only; restrict in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
