@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.app.k8s_utils import list_pods, list_nodes
+from .k8s_utils import list_pods, list_nodes
 
 app = FastAPI()
 
