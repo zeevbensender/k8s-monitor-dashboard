@@ -1,9 +1,15 @@
 from kubernetes import client, config
 
-# Load kube config
-config.load_kube_config()  # use config.load_incluster_config() if running inside K8s
+_config_loaded = False
+
+def _ensure_config_loaded():
+    global _config_loaded
+    if not _config_loaded:
+        config.load_kube_config()
+        _config_loaded = True
 
 def list_pods():
+    _ensure_config_loaded()
     v1 = client.CoreV1Api()
     pods = v1.list_pod_for_all_namespaces(watch=False)
     result = []
@@ -17,6 +23,7 @@ def list_pods():
     return result
 
 def list_nodes():
+    _ensure_config_loaded()
     v1 = client.CoreV1Api()
     nodes = v1.list_node()
     result = []
